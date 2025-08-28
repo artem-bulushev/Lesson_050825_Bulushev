@@ -18,7 +18,6 @@ namespace Code
         {
             _rigidbody = GetComponent<Rigidbody>();
             _force = Random.Range(3.0f, 47.0f);
-            //_projectorHelper = new BulletProjectorHelper(_bulletHoles);
         }
 
         private void OnCollisionEnter(Collision other)
@@ -36,7 +35,6 @@ namespace Code
                     if (tryRicochet == false)
                     {
                         ContactPoint contact = other.contacts[0];
-                        //_projectorHelper.CreateBulletHole(contact.point, contact.normal, other.transform);
                     }
                     return;
                 }
@@ -99,85 +97,5 @@ namespace Code
 
             Destroy(gameObject);
         }
-
-        //[SerializeField] private float _damage = 1.0f;
-        //[SerializeField] private float _force = 3.0f;
-
-        //private Rigidbody _rigidbody;
-
-        //public bool IsActive { get; private set; }
-
-        //public float Force
-        //{
-        //    get
-        //    {
-        //        if (_force < 0)
-        //        {
-        //            return 0;
-        //        }
-        //        return _force;
-        //    }
-
-        //    set
-        //    {
-        //        if (IsActive == false)
-        //        {
-        //            _force = 0;
-        //            return;
-        //        }
-        //        _force = value;
-        //    }
-        //}
-
-        //private void Awake()
-        //{
-        //    _rigidbody = GetComponent<Rigidbody>();
-        //}
-
-        //private void OnBecameInvisible()
-        //{
-        //    if (IsActive == false)
-        //    {
-        //        return;
-        //    }
-
-        //    Destroy(gameObject);
-        //}
-
-        //private void OnCollisionEnter(Collision other)
-        //{
-        //    Destroy(gameObject);
-
-        //    if (other.collider.TryGetComponent(out HealthController health))
-        //    {
-        //        if (health.CanTakeDamage(_damage))
-        //        {
-        //            return;
-        //        }
-
-        //        if (other.collider.TryGetComponent(out Rigidbody rigidbody) == false)
-        //        {
-        //            rigidbody = other.collider.gameObject.AddComponent<Rigidbody>();
-        //        }
-
-        //        rigidbody.AddForce(_rigidbody.velocity * Force, ForceMode.Impulse);
-        //    }
-        //}
-
-        //public void Run(Vector3 path, Vector3 startPosition)
-        //{
-        //    transform.position = startPosition;
-        //    gameObject.SetActive(true);
-        //    _rigidbody.WakeUp();
-        //    _rigidbody.AddForce(path);
-        //    IsActive = true;
-        //}
-
-        //public void Sleep()
-        //{
-        //    _rigidbody.Sleep();
-        //    gameObject.SetActive(false);
-        //    IsActive = false;
-        //}
     }
 }
